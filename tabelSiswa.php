@@ -22,6 +22,21 @@ function updateBiodata($nisn, $nama, $kelas, $jurusan, $urutan, $tempat_lahir, $
     }
 }
 
+///function untuk menampilkan data siswa
+function tampilBiodata(){
+    $conn = connect();
+    $sql = "SELECT * FROM biodata";
+    $result = mysqli_query($conn, $sql);
+    $data = [];
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+    }
+    return $data;
+}
+
+
 ////function delete biodata
 function deleteBiodata($nisn){
     $conn = connect();
